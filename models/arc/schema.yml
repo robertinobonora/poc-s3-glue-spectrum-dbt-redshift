@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: producto_canal_contratado
+    description: "Tabla del arc con los comercios asociados a los clientes de Transbank"
+    columns: 
+      - name: cdg_comercio
+        description: '{{ doc(“detalle_campo_cdg_comercio") }}'
+      - name: cdg_comercio_dolar
+        description: '{{ doc("detalle_campo_cdg_comercio_dolar") }}'
+      - name: rut_cliente
+        description: '{{ doc("detalle_campo_rut_cliente") }}'
+      - name: nom_fantasia
+        description: ‘{{ doc("detalle_campo_nom_fantasia") }}'
+      - name: fch_ingreso
+        description: '{{ doc("detalle_campo_fch_ingreso") }}'
+      - name: id_estado
+        description: '{{ doc("detalle_campo_id_estado") }}'
+      - name: fch_estado
+        description: '{{ doc("detalle_campo_fch_estado") }}'
+      - name: cdg_tipo_conexion
+        description: '{{ doc("detalle_campo_cdg_tipo_conexion") }}'
+      - name: cdg_rubro_tbk
+        description: '{{ doc("detalle_campo_cdg_rubro_tbk") }}'
+      - name: cdg_enrolador
+        description: '{{ doc("detalle_campo_cdg_enrolador") }}'
+      - name: nom_giro_comercial
+        description: '{{ doc("detalle_campo_nom_giro_comercial") }}'
+      - name: id_tipo_cliente_comercio
+        description: '{{ doc("detalle_campo_id_tipo_cliente_comercio") }}'

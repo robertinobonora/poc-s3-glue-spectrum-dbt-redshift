@@ -1,0 +1,107 @@
+version: 2
+
+sources:
+  - name: ext_catalog_schema
+    database: dev
+    schema: poc_redshift_spectrum
+    tables: 
+      - name: ptlf
+        description: Fuente de datos externa con información de tabla ptlf desde Hadoop
+      - name: comercios
+        description: Fuente de datos externa con información de los comercios desde Hadoop
+
+models:
+  - name: ptlf
+    description: "Tabla raw del ptlf"
+    columns: 
+      - name: bin_ext
+        description: '{{ doc("detalle_campo_bin_ext") }}'
+      - name: lnin_sec
+        description: '{{ doc("detalle_campo_lnin_sec") }}'
+        tests:
+          - unique
+          - not_null
+      - name: fecha_sys
+        description: '{{ doc("detalle_campo_fecha_sys") }}'
+      - name: fecha_proceso
+        description: '{{ doc("detalle_campo_fecha_proceso") }}'
+      - name: retailer_id
+        description: '{{ doc("detalle_campo_retailer_id") }}'
+      - name: tipo_tarjeta_p7
+        description: '{{ doc("detalle_campo_tipo_tarjeta_p7") }}'
+      - name: identificador_producto
+        description: '{{ doc("detalle_campo_identificador_producto") }}'
+      - name: dat_tim
+        description: '{{ doc("detalle_campo_dat_tim") }}'
+      - name: rec_typ
+        description: '{{ doc("detalle_campo_rec_typ") }}'
+      - name: tc
+        description: '{{ doc("detalle_campo_tc") }}'
+      - name: t
+        description: '{{ doc("detalle_campo_t") }}'
+      - name: typ
+        description: '{{ doc("detalle_campo_typ") }}'
+      - name: dft_capture_flg
+        description: '{{ doc("detalle_campo_dft_capture_flg") }}'
+      - name: crd_ln
+        description: '{{ doc("detalle_campo_crd_ln") }}'
+      - name: crd_typ
+        description: '{{ doc("detalle_campo_crd_typ") }}'
+      - name: crd_fiid
+        description: '{{ doc("detalle_campo_crd_fiid") }}'
+      - name: term_term_id
+        description: '{{ doc("detalle_campo_term_term_id") }}'
+      - name: r1_num_serie
+        description: '{{ doc("detalle_campo_r1_num_serie") }}'
+      - name: term_ln
+        description: '{{ doc("detalle_campo_term_ln") }}'
+      - name: term_cntry_cde
+        description: '{{ doc("detalle_campo_term_cntry_cde") }}'
+      - name: resp_cde
+        description: '{{ doc("detalle_campo_resp_cde") }}'
+      - name: amt_1
+        description: '{{ doc("detalle_campo_amt_1") }}'
+      - name: amt_2
+        description: '{{ doc("detalle_campo_amt_2") }}'
+      - name: propina
+        description: '{{ doc("detalle_campo_propina") }}'
+      - name: apprv_cde
+        description: '{{ doc("detalle_campo_apprv_cde") }}'
+      - name: orig_crncy_cde
+        description: '{{ doc("detalle_campo_orig_crncy_cde") }}'
+      - name: tipo_cuota
+        description: '{{ doc("detalle_campo_tipo_cuota") }}'
+      - name: num_cuotas
+        description: '{{ doc("detalle_campo_num_cuotas") }}'
+      - name: identificador_modelo
+        description: '{{ doc("detalle_campo_identificador_modelo") }}'
+  - name: comercios
+    description: "Tabla raw de los comercios"
+    columns: 
+      - name: cod_cred											
+        description: '{{ doc("detalle_campo_cod_cred") }}'
+        tests:
+          - unique
+          - not_null
+      - name: cod_dolar
+        description: '{{ doc("detalle_campo_cod_dolar") }}'
+      - name: rut
+        description: '{{ doc("detalle_campo_rut") }}'
+      - name: nombre_fantasia
+        description: '{{ doc("detalle_campo_nombre_fantasia") }}'
+      - name: fecha_ingreso
+        description: '{{ doc("detalle_campo_fecha_ingreso") }}'
+      - name: estado
+        description: '{{ doc("detalle_campo_estado") }}'
+      - name: fecha_estado
+        description: '{{ doc("detalle_campo_fecha_estado") }}'
+      - name: tipo_conexion
+        description: '{{ doc("detalle_campo_tipo_conexion") }}'
+      - name: cod_rubro
+        description: '{{ doc("detalle_campo_cod_rubro") }}'
+      - name: cuenta
+        description: '{{ doc("detalle_campo_cuenta") }}'
+      - name: giro_comercial
+        description: '{{ doc("detalle_campo_giro_comercial") }}'
+      - name: id_tipoclientecomercio
+        description: '{{ doc("detalle_campo_id_tipoclientecomercio") }}'

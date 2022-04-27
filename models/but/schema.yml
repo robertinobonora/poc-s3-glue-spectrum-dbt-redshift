@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: tx_adquirida
+    description: "Tabla del but de la transacción adquirida"
+    columns: 
+      - name: id_transaccion
+        description: '{{ doc("detalle_campo_id_transaccion") }}'
+      - name: tms_sistema
+        description: '{{ doc("detalle_campo_tms_sistema") }}'
+      - name: tms_transaccion
+        description: '{{ doc("detalle_campo_tms_transaccion") }}'
+      - name: cdg_tipo_tx
+        description: '{{ doc("detalle_campo_cdg_tipo_tx") }}'
+      - name: cdg_identificador_tx
+        description: '{{ doc("detalle_campo_cdg_identificador_tx") }}'
+      - name: cdg_subtipo_tx
+        description: '{{ doc("detalle_campo_cdg_subtipo_tx") }}'
+      - name: cdg_tipo_registro
+        description: '{{ doc("detalle_campo_cdg_tipo_registro") }}'
+      - name: cdg_tipo_respuesta
+        description: '{{ doc("detalle_campo_cdg_tipo_respuesta") }}'
+      - name: flg_captura
+        description: '{{ doc("detalle_campo_flg_captura") }}'
+      - name: flg_estado_aprobada
+        description: '{{ doc("detalle_campo_flg_estado_aprobada") }}'
+      - name: cdg_autorizacion
+        description: '{{ doc("detalle_campo_cdg_autorizacion") }}'
+      - name: cdg_moneda
+        description: '{{ doc("detalle_campo_cdg_moneda") }}'
+      - name: cdg_comercio
+        description: '{{ doc("detalle_campo_cdg_comercio") }}'
+      - name: id_tipo_cuota
+        description: '{{ doc("detalle_campo_id_tipo_cuota") }}'
+      - name: num_cuotas
+        description: '{{ doc("detalle_campo_num_cuotas") }}'
+      - name: num_bin_ext
+        description: '{{ doc("detalle_campo_num_bin_ext") }}'
+      - name: cdg_marca_tarjeta
+        description: '{{ doc("detalle_campo_cdg_marca_tarjeta") }}'
+      - name: cdg_medio_pago
+        description: '{{ doc("detalle_campo_cdg_medio_pago") }}'
+      - name: cdg_modelo_operacion
+        description: '{{ doc("detalle_campo_cdg_modelo_operacion") }}'
+      - name: cdg_fiid
+        description: '{{ doc("detalle_campo_cdg_fiid") }}'
+      - name: id_terminal
+        description: '{{ doc("detalle_campo_id_terminal") }}'
+      - name: cdg_canal_billetera
+        description: '{{ doc("detalle_campo_cdg_canal_billetera") }}'
+      - name: cdg_red_terminal
+        description: '{{ doc("detalle_campo_cdg_red_terminal") }}'
+      - name: cdg_pais_terminal
+        description: '{{ doc("detalle_campo_cdg_pais_terminal") }}'
+      - name: cdg_serie_equipo_r1
+        description: '{{ doc("detalle_campo_cdg_serie_equipo_r1") }}'
+      - name: mto_transaccion
+        description: '{{ doc("detalle_campo_mto_transaccion") }}'
+      - name: mto_vuelto
+        description: '{{ doc("detalle_campo_mto_vuelto") }}'
+      - name: mto_propina
+        description: '{{ doc("detalle_campo_mto_propina") }}'
+      - name: anno_proc
+        description: '{{ doc("detalle_campo_anno_proc") }}'
+      - name: mes_proc
+        description: '{{ doc("detalle_campo_mes_proc") }}'
+      - name: dia_proc
+        description: '{{ doc("detalle_campo_dia_proc") }}'
+ 
