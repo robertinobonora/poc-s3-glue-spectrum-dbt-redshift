@@ -1,9 +1,9 @@
-{% macro ejecucion_proyecto(tipo_registro) -%}
-{%- if tipo_registro == 1 -%}
+{% macro ejecucion_modelo(this) -%}
+{%- if this.table = '"ptlf"'-%}
 insert into dev.modelo_metricas.ejecucion_metrica (id_proceso,id_metrica,id_tipo_registro,tms_ejecucion_fin,val_metrica)
-values(NULL,NULL,'{{ tipo_registro }}',NULL,NULL); commit;
-{%- else -%}
+values(1,NULL,1,NULL,NULL); commit;
+{%- elif  this.table = '"comercios"' -%}
 insert into dev.modelo_metricas.ejecucion_metrica (id_proceso,id_metrica,id_tipo_registro,tms_ejecucion_fin,val_metrica)
-values(NULL,NULL,'{{ tipo_registro }}','{{ dbt_utils.current_timestamp}}',NULL); commit;
+values(2,NULL,1,NULL,NULL); commit;
 {%- endif -%}
 {%- endmacro%}

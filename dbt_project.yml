@@ -23,23 +23,28 @@ target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
 
-on-run-start: "{{ ejecucion_proyecto('I') }}"
-on-run-end: "{{ ejecucion_proyecto('F') }}"
+on-run-start: "{{ ejecucion_proyecto(1) }}"
+on-run-end: "{{ ejecucion_proyecto(3) }}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
-  pre-hook:
-  post-hook: 
+
   poc_s3_glue_spectrum_dbt_redshift:
     # Config indicated by + and applies to all files under models/raw/
     raw:
       +materialized: table
       +schema: raw
+      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
+      +post-hook: "{{ ejecucion_modelo(this) }}"
     but:
       +materialized: table
       +schema: but
+      +pre-hook: 
+      +post-hook: 
     arc:
       +materialized: table
       +schema: arc
+      +pre-hook: 
+      +post-hook: 
