@@ -1,7 +1,7 @@
 {% macro ejecucion_modelo(this) -%}
-{%- if this.table = '"ptlf"'-%}
+{%- if this.name = 'ptlf' -%}
     {{ ejecucion_modelo_ptlf(this) }}
-{%- elif  this.table = '"comercios"' -%}
+{%- elif  this.name = 'comercios' -%}
     {{ ejecucion_modelo_comercios(this) }}
 {%- endif -%}
 {%- endmacro%}

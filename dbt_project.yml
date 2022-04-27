@@ -30,6 +30,7 @@ on-run-end: "{{ ejecucion_proyecto(3) }}"
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
+
   poc_s3_glue_spectrum_dbt_redshift:
     # Config indicated by + and applies to all files under models/raw/
     raw:
@@ -40,10 +41,10 @@ models:
     but:
       +materialized: table
       +schema: but
-      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
-      +post-hook: 
+#      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
+#      +post-hook: "{{ ejecucion_modelo(this) }}"
     arc:
       +materialized: table
       +schema: arc
-      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
-      +post-hook: 
+#      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
+#      +post-hook: "{{ ejecucion_modelo(this) }}"
