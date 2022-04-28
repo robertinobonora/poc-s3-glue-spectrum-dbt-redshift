@@ -33,7 +33,7 @@ WITH wrk_1 AS (
         tipo_cuota, 
         num_cuotas, 
         identificador_modelo
-    from {{ source(ext_catalog_schema,ptlf) }}
+    from {{ source('ext_catalog_schema','ptlf') }}
 )
 
 select * from wrk_1;

@@ -16,7 +16,13 @@ WITH wrk_1 AS (
         cuenta, 
         giro_comercial, 
         id_tipoclientecomercio
-    from {{ source(ext_catalog_schema,comercios) }}
+    from {{ source('ext_catalog_schema', 'comercios') }}
 )
 
-select * from wrk_1;
+, wrk_2 AS (
+    select 
+        *
+    from wrk_1
+)
+
+select * from wrk_2

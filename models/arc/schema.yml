@@ -5,7 +5,7 @@ models:
     description: "Tabla del arc con los comercios asociados a los clientes de Transbank"
     columns: 
       - name: cdg_comercio
-        description: '{{ doc(“detalle_campo_cdg_comercio") }}'
+        description: '{{ doc("detalle_campo_cdg_comercio") }}'
       - name: cdg_comercio_dolar
         description: '{{ doc("detalle_campo_cdg_comercio_dolar") }}'
       - name: rut_cliente

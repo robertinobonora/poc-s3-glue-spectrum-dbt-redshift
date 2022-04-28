@@ -106,10 +106,6 @@
     Identificador del tipo de cuota en que se realizó una transacción de crédito en cuotas
 {% enddocs%}
 
-{% docs detalle_campo_num_cuotas%}
-    Número de cuotas en la que se realizó una transacción de crédito en cuotas
-{% enddocs%}
-
 {% docs detalle_campo_identificador_modelo%}
     Identificador del modelo de tarificación en el que se realizó la transacción
 {% enddocs%}
@@ -364,7 +360,7 @@
     Nombre del Giro comercial asociado al cliente
 {% enddocs%}
 
-{% docs id_tipo_cliente_comercio%}
+{% docs detalle_campo_id_tipo_cliente_comercio%}
     Identificador del tipo de comercio
         0 - Comercio normal
         1 - Cliente PSP
