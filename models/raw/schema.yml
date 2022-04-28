@@ -1,14 +1,15 @@
+
 version: 2
 
 sources:
   - name: ext_catalog_schema
     database: dev
     schema: poc_redshift_spectrum
-    tables: 
+    tables:
       - name: ptlf
-        description: Fuente de datos externa con información de tabla ptlf desde Hadoop
+        description: "Fuente de datos externa con información de tabla PTLF desde Hadoop"
       - name: comercios
-        description: Fuente de datos externa con información de los comercios desde Hadoop
+        description: "Fuente de datos externa con información de los comercios desde Hadoop"
 
 models:
   - name: ptlf
@@ -77,31 +78,31 @@ models:
         description: '{{ doc("detalle_campo_identificador_modelo") }}'
   - name: comercios
     description: "Tabla raw de los comercios"
-#    columns: 
-#      - name: cod_cred
-#        description: '{{ doc("detalle_campo_cod_cred") }}'
-#        tests:
-#          - unique
-#          - not_null
-#      - name: cod_dolar
-#        description: '{{ doc("detalle_campo_cod_dolar") }}'
-#      - name: rut
-#        description: '{{ doc("detalle_campo_rut") }}'
-#      - name: nombre_fantasia
-#        description: '{{ doc("detalle_campo_nombre_fantasia") }}'
-#      - name: fecha_ingreso
-#        description: '{{ doc("detalle_campo_fecha_ingreso") }}'
-#      - name: estado
-#        description: '{{ doc("detalle_campo_estado") }}'
-#      - name: fecha_estado
-#        description: '{{ doc("detalle_campo_fecha_estado") }}'
-#      - name: tipo_conexion
-#        description: '{{ doc("detalle_campo_tipo_conexion") }}'
-#      - name: cod_rubro
-#        description: '{{ doc("detalle_campo_cod_rubro") }}'
-#      - name: cuenta
-#        description: '{{ doc("detalle_campo_cuenta") }}'
-#      - name: giro_comercial
-#        description: '{{ doc("detalle_campo_giro_comercial") }}'
-#      - name: id_tipoclientecomercio
-#        description: '{{ doc("detalle_campo_id_tipoclientecomercio") }}'
+    columns: 
+      - name: cod_cred
+        description: '{{ doc("detalle_campo_cod_cred") }}'
+        tests:
+          - unique
+          - not_null
+      - name: cod_dolar
+        description: '{{ doc("detalle_campo_cod_dolar") }}'
+      - name: rut
+        description: '{{ doc("detalle_campo_rut") }}'
+      - name: nombre_fantasia
+        description: '{{ doc("detalle_campo_nombre_fantasia") }}'
+      - name: fecha_ingreso
+        description: '{{ doc("detalle_campo_fecha_ingreso") }}'
+      - name: estado
+        description: '{{ doc("detalle_campo_estado") }}'
+      - name: fecha_estado
+        description: '{{ doc("detalle_campo_fecha_estado") }}'
+      - name: tipo_conexion
+        description: '{{ doc("detalle_campo_tipo_conexion") }}'
+      - name: cod_rubro
+        description: '{{ doc("detalle_campo_cod_rubro") }}'
+      - name: cuenta
+        description: '{{ doc("detalle_campo_cuenta") }}'
+      - name: giro_comercial
+        description: '{{ doc("detalle_campo_giro_comercial") }}'
+      - name: id_tipoclientecomercio
+        description: '{{ doc("detalle_campo_id_tipoclientecomercio") }}'

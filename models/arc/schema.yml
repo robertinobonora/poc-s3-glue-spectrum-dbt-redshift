@@ -11,7 +11,7 @@ models:
       - name: rut_cliente
         description: '{{ doc("detalle_campo_rut_cliente") }}'
       - name: nom_fantasia
-        description: ‘{{ doc("detalle_campo_nom_fantasia") }}'
+        description: '{{ doc("detalle_campo_nom_fantasia") }}'
       - name: fch_ingreso
         description: '{{ doc("detalle_campo_fch_ingreso") }}'
       - name: id_estado

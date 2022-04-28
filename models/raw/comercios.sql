@@ -1,5 +1,5 @@
 {{ 
-    config(sort='cod_cred', dist=all) 
+    config(sort='cod_cred', dist='cod_cred') 
 }}
 
 WITH wrk_1 AS (
@@ -15,8 +15,8 @@ WITH wrk_1 AS (
         cod_rubro, 
         cuenta, 
         giro_comercial, 
-        id_tipoclientecomercio
-    from {{ source('ext_catalog_schema', 'comercios') }}
+        id_tipoclientecomercio 
+    from {{ source('ext_catalog_schema','comercios') }}
 )
 
 , wrk_2 AS (

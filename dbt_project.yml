@@ -36,15 +36,16 @@ models:
     raw:
       +materialized: table
       +schema: raw
-#      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
-#      +post-hook: "{{ ejecucion_modelo(this) }}"
-    but:
-      +materialized: table
-      +schema: but
-#      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
-#      +post-hook: "{{ ejecucion_modelo(this) }}"
+      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
+      +post-hook: "{{ ejecucion_modelo(this) }}"
     arc:
       +materialized: table
       +schema: arc
-#      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
-#      +post-hook: "{{ ejecucion_modelo(this) }}"
+      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
+      +post-hook: "{{ ejecucion_modelo(this) }}"
+    but:
+      +materialized: table
+      +schema: but
+      +pre-hook: "{{ ejecucion_pre_modelo(this) }}"
+      +post-hook: "{{ ejecucion_modelo(this) }}"
+

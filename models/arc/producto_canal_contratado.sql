@@ -1,5 +1,5 @@
 {{ 
-    config(sort='cdg_comercio', dist=all) 
+    config(sort='cdg_comercio', dist='cdg_comercio') 
 }}
 
 WITH wrk_comercio_1 AS (
@@ -32,7 +32,7 @@ WITH wrk_comercio_1 AS (
         lpad(cod_rubro,3,'0') as cdg_rubro_tbk,
         cuenta as cdg_enrolador,
         giro_comercial as nom_giro_comercial,
-        case when id_tipoclientecomercio not in (0,1,2) then 0 el id_tipoclientecomercio end as id_tipo_cliente_comercio
+        case when id_tipoclientecomercio not in (0,1,2) then 0 else id_tipoclientecomercio end as id_tipo_cliente_comercio
 )
 
 , wrk_final AS (
@@ -41,4 +41,4 @@ WITH wrk_comercio_1 AS (
     from wrk_comercio_2
 )
 
-select * from wrk_final;
+select * from wrk_final

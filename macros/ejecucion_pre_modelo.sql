@@ -4,13 +4,19 @@
     schema=this.schema,
     identifier=this.name) -%}
 {% set table_exists=source_relation is not none %}
-{%- if table_exists -%}
+{%- if table_exists is sameas true -%}
 {%- if this.name == 'ptlf' -%}
 insert into dev.modelo_metricas.ejecucion_metrica (id_proceso,id_metrica,id_tipo_registro,tms_ejecucion_fin,val_metrica)
 values(1,NULL,1,NULL,NULL); commit;
 {%- elif this.name == 'comercios' -%}
 insert into dev.modelo_metricas.ejecucion_metrica (id_proceso,id_metrica,id_tipo_registro,tms_ejecucion_fin,val_metrica)
 values(2,NULL,1,NULL,NULL); commit;
+{%- elif this.name == 'producto_canal_contratado' -%}
+insert into dev.modelo_metricas.ejecucion_metrica (id_proceso,id_metrica,id_tipo_registro,tms_ejecucion_fin,val_metrica)
+values(3,NULL,1,NULL,NULL); commit;
+{%- elif this.name == 'tx_adquirida' -%}
+insert into dev.modelo_metricas.ejecucion_metrica (id_proceso,id_metrica,id_tipo_registro,tms_ejecucion_fin,val_metrica)
+values(4,NULL,1,NULL,NULL); commit;
 {%- endif -%}
 {%- endif -%}
 {%- endmacro%}

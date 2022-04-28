@@ -66,4 +66,3 @@ models:
         description: '{{ doc("detalle_campo_mes_proc") }}'
       - name: dia_proc
         description: '{{ doc("detalle_campo_dia_proc") }}'
- 

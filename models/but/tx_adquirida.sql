@@ -78,12 +78,12 @@ WITH wrk_ptlf_1 AS (
         ,cast(ptlf.amt_1 as double) as mto_transaccion
         ,cast(ptlf.amt_2 as double) as mto_vuelto
         ,cast(ptlf.propina as double) as mto_propina
-        ,cast(substr(ptlf.dat_tim,1,4) as varchar(4)) as anno_proc
-        ,cast(lpad(substr(ptlf.dat_tim,5,2),2,'0') as varchar(2)) as mes_proc
-        ,cast(lpad(substr(ptlf.dat_tim,7,2),2,'0') as varchar(2)) as dia_proc
+        ,cast(substring(ptlf.dat_tim,1,4) as varchar(4)) as anno_proc
+        ,cast(lpad(substring(ptlf.dat_tim,5,2),2,'0') as varchar(2)) as mes_proc
+        ,cast(lpad(substring(ptlf.dat_tim,7,2),2,'0') as varchar(2)) as dia_proc
     from wrk_ptlf_1 as ptlf
     left join wrk_comercios_1 com 
-    on substr(ptlf.retailer_id,5,length(ptlf.retailer_id)) = com.cod_cred
+    on substring(ptlf.retailer_id,5,length(ptlf.retailer_id)) = com.cod_cred
 )
 
 , wrk_final AS (
@@ -92,4 +92,4 @@ WITH wrk_ptlf_1 AS (
     from wrk_join_1
 )
 
-select * from wrk_final;
+select * from wrk_final

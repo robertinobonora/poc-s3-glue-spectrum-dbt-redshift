@@ -36,4 +36,10 @@ WITH wrk_1 AS (
     from {{ source('ext_catalog_schema','ptlf') }}
 )
 
-select * from wrk_1;
+, wrk_2 AS (
+    select 
+        *
+    from wrk_1
+)
+
+select * from wrk_2
