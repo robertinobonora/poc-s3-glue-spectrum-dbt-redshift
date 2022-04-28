@@ -33,6 +33,7 @@ WITH wrk_comercio_1 AS (
         cuenta as cdg_enrolador,
         giro_comercial as nom_giro_comercial,
         case when id_tipoclientecomercio not in (0,1,2) then 0 else id_tipoclientecomercio end as id_tipo_cliente_comercio
+    from wrk_comercio_1
 )
 
 , wrk_final AS (

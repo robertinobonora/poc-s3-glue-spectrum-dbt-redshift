@@ -21,7 +21,7 @@ WITH wrk_ptlf_1 AS (
         ,cast(ptlf.fecha_sys as timestamp) as tms_sistema
         ,to_timestamp(substr(ptlf.dat_tim,1,14), 'YYYY-MM-DD HH24:MI:SS') as tms_transaccion
         ,case
-            when ptlf.num_bin_ext = '1111111111' then 106
+            when ptlf.bin_ext = '1111111111' then 106
             when ptlf.dft_capture_flg = 0 then 105
             when ptlf.rec_typ in ('01','20','21','22','23') and ptlf.typ in (210,220) and ptlf.tc in ('10','12','13','15','18') 
                 and ptlf.resp_cde <= 9 and ptlf.dft_capture_flg = 1 then 100
@@ -40,7 +40,7 @@ WITH wrk_ptlf_1 AS (
         ,case when ptlf.resp_cde <= 9 then 1 else 0 end as flg_estado_aprobada
         ,ptlf.apprv_cde as cdg_autorizacion
         ,cast(lpad(ptlf.orig_crncy_cde,3,'0') as varchar(3)) as cdg_moneda
-        ,coalesce(com.cdg_comercio,substr(ptlf.retailer_id,5,length(ptlf.retailer_id)),'-1') as cdg_comercio
+        ,coalesce(com.cod_cred,substr(ptlf.retailer_id,5,length(ptlf.retailer_id)),'-1') as cdg_comercio
         ,ptlf.tipo_cuota as id_tipo_cuota
         ,ptlf.num_cuotas as num_cuotas
         ,ptlf.bin_ext as num_bin_ext
@@ -52,7 +52,7 @@ WITH wrk_ptlf_1 AS (
                     when ptlf.crd_fiid = 690 then 'MC'
                     when ptlf.crd_fiid = 547 then 'AMEX'
                     when ptlf.crd_fiid = 562 then 'DS'
-                else '-1'
+                else '-1' end
             when upper(trim(ptlf.crd_typ)) = 'V' then 'VI'
             when upper(trim(ptlf.crd_typ)) = 'M' then 'MC'
             when upper(trim(ptlf.crd_typ)) = 'AX' then 'AMEX'
@@ -61,7 +61,7 @@ WITH wrk_ptlf_1 AS (
             when upper(ptlf.tipo_tarjeta_p7) = 'D' then 
                 case 
                     when upper(ptlf.identificador_producto) in ('PP','MPI','VPI','MPD','VPD') then 'P'
-                    else 'D'
+                    else 'D' end
             when upper(ptlf.tipo_tarjeta_p7) = 'C' then 'C'
             else '-1' end as cdg_medio_pago
         ,ptlf.identificador_modelo as cdg_modelo_operacion

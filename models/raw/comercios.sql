@@ -21,8 +21,25 @@ WITH wrk_1 AS (
 
 , wrk_2 AS (
     select 
-        *
+        cast(cod_cred as varchar(9)) as cod_cred, 
+        cast(cod_dolar as varchar(9)) as cod_dolar, 
+        cast(rut as varchar(10)) as rut, 
+        cast(nombre_fantasia as varchar(100)) as nombre_fantasia, 
+        to_timestamp(fecha_ingreso, 'YYYY-MM-DD HH24:MI:SS') as fecha_ingreso, 
+        cast(estado as smallint) as estado, 
+        to_timestamp(fecha_estado, 'YYYY-MM-DD HH24:MI:SS') as fecha_estado, 
+        cast(tipo_conexion as varchar(10)) as tipo_conexion, 
+        cast(cod_rubro as varchar(3)) as cod_rubro, 
+        cast(cuenta as varchar(40)) as cuenta, 
+        cast(giro_comercial as varchar(100)) as giro_comercial, 
+        cast(id_tipoclientecomercio as smallint) as id_tipoclientecomercio
     from wrk_1
 )
 
-select * from wrk_2
+, wrk_3 AS (
+    select 
+        *
+    from wrk_2
+)
+
+select * from wrk_3
