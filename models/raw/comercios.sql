@@ -17,6 +17,7 @@ WITH wrk_1 AS (
         giro_comercial, 
         id_tipoclientecomercio 
     from {{ source('ext_catalog_schema','comercios') }}
+    where cast(anno||mes||dia as int) = (select max(cast(anno||mes||dia as int)) from {{ source('ext_catalog_schema','comercios') }})
 )
 
 , wrk_2 AS (
