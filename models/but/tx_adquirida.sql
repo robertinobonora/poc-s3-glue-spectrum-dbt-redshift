@@ -19,7 +19,7 @@ WITH wrk_ptlf_1 AS (
     select 
         ptlf.lnin_sec as id_transaccion
         ,cast(ptlf.fecha_sys as timestamp) as tms_sistema
-        ,to_timestamp(substr(ptlf.dat_tim,1,14), 'YYYY-MM-DD HH24:MI:SS') as tms_transaccion
+        ,cast(to_timestamp(substring(ptlf.dat_tim,1,14),'YYYYMMDDHH24MISS') as timestamp) as tms_transaccion
         ,case
             when ptlf.bin_ext = '1111111111' then 106
             when ptlf.dft_capture_flg = 0 then 105
@@ -40,7 +40,7 @@ WITH wrk_ptlf_1 AS (
         ,case when ptlf.resp_cde <= 9 then 1 else 0 end as flg_estado_aprobada
         ,ptlf.apprv_cde as cdg_autorizacion
         ,cast(lpad(ptlf.orig_crncy_cde,3,'0') as varchar(3)) as cdg_moneda
-        ,coalesce(com.cod_cred,substr(ptlf.retailer_id,5,length(ptlf.retailer_id)),'-1') as cdg_comercio
+        ,coalesce(cast(com.cod_cred as varchar(9)),substring(ptlf.retailer_id,5,length(ptlf.retailer_id)),'-1') as cdg_comercio
         ,ptlf.tipo_cuota as id_tipo_cuota
         ,ptlf.num_cuotas as num_cuotas
         ,ptlf.bin_ext as num_bin_ext
@@ -75,9 +75,9 @@ WITH wrk_ptlf_1 AS (
         ,ptlf.term_ln as cdg_red_terminal
         ,ptlf.term_cntry_cde as cdg_pais_terminal
         ,ptlf.r1_num_serie as cdg_serie_equipo_r1
-        ,cast(ptlf.amt_1 as double) as mto_transaccion
-        ,cast(ptlf.amt_2 as double) as mto_vuelto
-        ,cast(ptlf.propina as double) as mto_propina
+        ,cast(regexp_replace(ptlf.amt_1, '[^0-9]+', '') as decimal(19,2)) as mto_transaccion
+        ,cast(regexp_replace(ptlf.amt_2, '[^0-9]+', '') as decimal(19,2)) as mto_vuelto
+        ,cast(regexp_replace(ptlf.propina, '[^0-9]+', '') as decimal(19,2)) as mto_propina
         ,cast(substring(ptlf.dat_tim,1,4) as varchar(4)) as anno_proc
         ,cast(lpad(substring(ptlf.dat_tim,5,2),2,'0') as varchar(2)) as mes_proc
         ,cast(lpad(substring(ptlf.dat_tim,7,2),2,'0') as varchar(2)) as dia_proc

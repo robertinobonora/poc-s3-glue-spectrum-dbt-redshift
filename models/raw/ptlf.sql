@@ -1,7 +1,7 @@
 {{ 
     config(materialized='incremental',
     unique_key='lnin_sec',
-    sort=['retailer_id', 'lnin_sec'],
+    sort=['retailer_id','lnin_sec'],
     dist='retailer_id') 
 }}
 
@@ -37,21 +37,21 @@ WITH wrk_1 AS (
         num_cuotas, 
         identificador_modelo
     from {{ source('ext_catalog_schema','ptlf') }}
-    {%- if is_incremental() -%}
-    where to_timestamp(substring(dat_tim,1,14), 'YYYYMMDDHH24MISS') > 
-            (select max(to_timestamp(substring(dat_tim,1,14), 'YYYYMMDDHH24MISS')) from {{ this }} ) 
-    {%- endif -%}
+    {% if is_incremental() %}
+    where cast(to_timestamp(substring(dat_tim,1,14),'YYYYMMDDHH24MISS') as timestamp) >= 
+            (select max(cast(to_timestamp(substring(dat_tim,1,14),'YYYYMMDDHH24MISS') as timestamp)) from {{ this }}) 
+    {% endif %}
 )
 
 , wrk_2 AS (
     select 
         cast(bin_ext as bigint) as bin_ext, 
-        cast(lnin_sec as bigint) as lnin_sec, 
-        to_timestamp(fecha_sys, 'YYYY-MM-DD HH24:MI:SS') as fecha_sys, 
-        to_timestamp(fecha_proceso, 'YYYY-MM-DD HH24:MI:SS') as fecha_proceso, 
+  		regexp_replace(lnin_sec, '[^0-9]+', '') as lnin_sec,
+        cast(to_timestamp(fecha_sys, 'YYYY-MM-DD HH24:MI:SS') as timestamp) as fecha_sys,  
+        cast(to_timestamp(fecha_proceso, 'YYYY-MM-DD HH24:MI:SS') as timestamp) as fecha_proceso, 
         cast(retailer_id as varchar(15)) as retailer_id, 
         cast(tipo_tarjeta_p7 as char(1)) as tipo_tarjeta_p7, 
-        cast(identificador_producto as varchar(3)) as identificador_producto, 
+        cast(identificador_producto as varchar(3)) as identificador_producto,  
         dat_tim, 
         cast(rec_typ as varchar(2)) as rec_typ, 
         cast(tc as varchar(2)) as tc, 
@@ -60,7 +60,7 @@ WITH wrk_1 AS (
         cast(dft_capture_flg as smallint) as dft_capture_flg, 
         crd_ln, 
         cast(crd_typ as varchar(2)) as crd_typ, 
-        cast(crd_fiid as int) as crd_fiid, 
+        cast(crd_fiid as varchar(4)) as crd_fiid, 
         cast(term_term_id as varchar(30)) as term_term_id, 
         cast(r1_num_serie as varchar(30)) as r1_num_serie, 
         cast(term_ln as varchar(4)) as term_ln, 
